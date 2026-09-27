@@ -7,8 +7,9 @@ public class InputUtil {
 
     public static String input(String info) {
         System.out.print(info + " : ");
-        if (!scanner.hasNextLine())
-            throw new java.util.NoSuchElementException("No line found");
+        if (!scanner.hasNextLine()) {
+            System.exit(0);
+        }
         return scanner.nextLine();
     }
 }

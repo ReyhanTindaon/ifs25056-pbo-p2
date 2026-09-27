@@ -19,16 +19,6 @@ public class ItemView {
         while (running) {
             presenter.showItems(useCase.getAllItems());
             printMenu();
-
-
-
-
-
-
-
-
-
-
             String input = InputUtil.input("Pilih");
             switch (input) {
                 case "1" -> addItem();
@@ -65,7 +55,7 @@ public class ItemView {
             return;
 
         Integer quantity = parseQuantity(strQuantity);
-        if (quantity == null || quantity < 0) {
+        if (quantity == null || quantity <= 0) {
             presenter.showInvalidQuantity();
             return;
         }
@@ -91,7 +81,7 @@ public class ItemView {
         Integer quantity = null;
         if (!strQuantity.isBlank()) {
             quantity = parseQuantity(strQuantity);
-            if (quantity == null || quantity < 0) {
+            if (quantity == null || quantity <= 0) {
                 presenter.showInvalidQuantity();
                 return;
             }

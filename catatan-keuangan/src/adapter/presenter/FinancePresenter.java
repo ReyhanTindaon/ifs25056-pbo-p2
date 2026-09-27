@@ -10,7 +10,11 @@ public class FinancePresenter {
         return String.format("%d | %s | Rp %.0f | %s", t.getId(), t.getDescription(), t.getAmount(), typeStr);
     }
 
-    private void printList(List<Transaction> list, String header, String emptyMessage, double balance, boolean showBalance) {
+    private void printBalance(double balance) {
+        System.out.printf("Saldo saat ini: Rp %.0f%n", balance);
+    }
+
+    private void printList(List<Transaction> list, String header, String emptyMessage) {
         System.out.println(header);
         if (list.isEmpty()) {
             System.out.println(emptyMessage);
@@ -19,22 +23,20 @@ public class FinancePresenter {
                 System.out.println(format(t));
             }
         }
-        if (showBalance) {
-            System.out.printf("Saldo saat ini: Rp %.0f%n", balance);
-        }
     }
 
     public void showTransactions(List<Transaction> list, double balance) {
-        printList(list, "Daftar Transaksi:", "- Belum ada transaksi!", balance, false);
-        System.out.printf("Saldo: Rp %.0f%n", balance);
+        printList(list, "Daftar Transaksi:", "- Belum ada transaksi!");
+        printBalance(balance);
     }
 
     public void showSearchResults(List<Transaction> list, String keyword) {
-        printList(list, "Hasil Pencarian: \"" + keyword + "\"", "- Transaksi tidak ditemukan!", 0, false);
+        printList(list, "Hasil Pencarian: \"" + keyword + "\"", "- Transaksi tidak ditemukan!");
     }
 
     public void showSortedTransactions(List<Transaction> list, double balance) {
-        printList(list, "Daftar Transaksi (Terurut):", "- Belum ada transaksi!", balance, false);
+        printList(list, "Daftar Transaksi (Terurut):", "- Belum ada transaksi!");
+        printBalance(balance);
     }
 
     public void showAddSuccess(Transaction t) {
