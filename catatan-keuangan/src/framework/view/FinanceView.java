@@ -91,7 +91,7 @@ public class FinanceView {
             return;
         }
 
-        presenter.showSortedTransactions(useCase.sortTransactions(option), useCase.getBalance());
+        presenter.showSortedTransactions(useCase.sortTransactions(option));
     }
 
     private void showBalance() {
